@@ -1,0 +1,60 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="section-intro padding-y-sm">
+  <div class="container">
+  
+  <div class="intro-banner-wrap ">
+    <img src="{% static 'images/highKicks.jpg' %}" class="img-fluid rounded-bottom mt-5" style="height:80vmin;">
+  </div>
+  
+  </div> <!-- container //  -->
+  </section>
+  <!-- ========================= SECTION MAIN END// ========================= -->
+  
+  <!-- ========================= SECTION  ========================= -->
+  <section class="section-name mt-3">
+  <div class="container">
+  
+    <div class=" m-auto p-3 col-md-6 col-sm-12 ">
+      <form action="#" class="search">
+        <div class="input-group w-100">
+            <input type="text" class="form-control" name="search" style="width:80%;" placeholder="Search">
+            
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+      </form> <!-- search-wrap .end// -->
+    </div> <!-- col.// -->
+
+
+    <header class="section-heading">
+      <a href="./store.html" class="btn btn-outline-primary float-right">See all</a>
+      <h3 class="section-title my-3">Popular products</h3>
+    </header><!-- sect-heading -->
+    
+    
+    <div class="row">
+      {% for product in products %} 
+      <div class="col-md-3 mb-5 ">
+        <div class="card  " style="width:15rem; height:20rem">
+          <a href="{{product.get_url}}" class="card-img"> <img class=" w-75 card-img-top" src="{{product.image.url}}"> </a>
+          <figcaption class="card-body">
+            <a href="{{product.get_url}}" class="card-title lead text-decoration-none text-secondary">{{product.title}}</a>
+            <div class="price mt-1">{{product.price}}</div> <!-- price-wrap.// -->
+          </figcaption>
+        </div>
+      </div> <!-- col.// --><br>
+      {% endfor %}
+      
+    </div> <!-- row.// -->
+  
+  </div><!-- container // -->
+</section>
+
+{% endblock content %}
