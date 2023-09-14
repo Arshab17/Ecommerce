@@ -1,0 +1,131 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+
+<!-- ============================ COMPONENT 1 ================================= -->
+
+<div class="container mt-5 p-5">
+
+
+        <div class="row mt-5">
+            <aside class="col-lg-6">
+
+        <div class="card ">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Billing Address</h4>
+        <form action="{% url 'checkout' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col form-group">
+                            <label for="" >First Name </label>
+                            <input type="text" name='first_name' class="form-control" required >
+                        </div>
+                        <div class="col form-group">
+                            <label for="" >Last Name </label>
+                            <input type="text" name='first_name' class="form-control" required >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                            <label for="" >Email </label>
+                            <input type="text" name='email' class="form-control" required >
+                        </div>
+                        <div class="col form-group">
+                            <label for="" >Phone Number </label>
+                            <input type="text" name='phone' class="form-control" required >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                            <label for="" >Address Line 1</label>
+                            <input type="text" name='address_line_1' class="form-control" required >
+                        </div>
+                        <div class="col form-group">
+                            <label for="" >Address Line 2 </label>
+                            <input type="text" name='address_line_2' class="form-control" required >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                            <label for="" >City </label>
+                            <input type="text" name='city' class="form-control" required >
+                        </div>
+                        <div class="col form-group">
+                            <label for="" >State </label>
+                            <input type="text" name='state' class="form-control" required >
+                        </div>
+                        <div class="col form-group">
+                            <label for="" >Country </label>
+                            <input type="text" name='Country' class="form-control" required >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-group">
+                            <label for="" >Order Note </label>
+                            <textarea type="text" name='order_note' class="form-control" required> </textarea>
+                        </div>
+                    </div>
+             
+                </div>
+
+                </div> <!-- card.// -->
+
+              </aside> <!-- col.// -->
+             <aside class="col-lg-6">
+
+                <div class="card">
+                <div class="card-body">
+                    <table class="table table-borderless table-shopping-cart">
+                        <thead class="text-muted">
+                        <tr class="small text-uppercase">
+                        <th scope="col">Product</th>
+                        <th scope="col" width="120">Quantity</th>
+                        <th scope="col" width="120">Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for cart_item in cart_items %}
+                        <tr>
+                            <td>
+                                <figure class="itemside align-items-center">
+                                    <div class="aside"><img src="{{ cart_item.product.image.url }}" class="img-sm w-25"></div>
+                                    <figcaption class="info">
+                                        <a href="#" class="title text-dark">{{ cart_item.product.title }}</a>
+                                        <p class="text-muted small">
+                                            {% for item in cart_item.variation.all %}
+                                            {{ item.variation_category| capfirst }} : {{ item.variation_value |capfirst}}
+                                            <br>
+                                            
+                                            {% endfor %}
+                                        </p>
+                                    </figcaption>
+                                </figure>
+                            </td>
+                            <td> 
+                              <label> {{cart_item.quantity}}</label>
+                            </td>
+                            <td> 
+                                <div class="price-wrap"> 
+                                    <var class="price">{{cart_item.sub_total}}</var> 
+                                    <small class="text-muted"> {{cart_item.product.price }} x {{cart_item.quantity}}  </small> 
+                                </div> <!-- price-wrap .// -->
+                            </td>
+                         
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <button type="submit" class="btn btn-primary btn-block"> Place Order </button>
+                    <a href="{% url 'home' %}" class="btn btn-light btn-block">Continue Shopping</a>
+        </form>
+                </div> <!-- card-body.// -->
+                </div> <!-- card.// -->
+
+        </aside> <!-- col.// -->
+
+
+        </div> <!-- row.// -->
+
+        <!-- ============================ COMPONENT 1 END .// ================================= -->
+    </div> <!---container-->
+    {% endblock content %}

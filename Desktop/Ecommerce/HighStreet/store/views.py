@@ -7,7 +7,7 @@ from django.core.paginator import EmptyPage,Paginator
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-@login_required(login_url='signin')
+# @login_required(login_url='signin')
 def home(request):
     search = request.GET.get('search')
     products = Product.objects.all()
