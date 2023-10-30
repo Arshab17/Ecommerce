@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'store',
-    'cart'
+    'cart',
+    'orders'
 ]
 
 AUTH_USER_MODEL = 'account.CustomUser'
@@ -145,3 +146,6 @@ EMAIL_HOST_USER = 'arshab98@gmail.com'
 EMAIL_HOST_PASSWORD = 'peto karj clww fjfr'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+RAZOR_KEY_ID = 'rzp_test_JzGGKrS2fBXKsk'
+RAZOR_KEY_SECRET = 'zbfzQ4wlPbZXW5COuehnvD16'

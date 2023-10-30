@@ -13,7 +13,7 @@
         <div class="card ">
             <div class="card-body">
                 <h4 class="card-title mb-4">Billing Address</h4>
-        <form action="{% url 'checkout' %}" method="POST">
+        <form action="{% url 'place_order' %}" method="POST">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col form-group">
@@ -22,7 +22,7 @@
                         </div>
                         <div class="col form-group">
                             <label for="" >Last Name </label>
-                            <input type="text" name='first_name' class="form-control" required >
+                            <input type="text" name='last_name' class="form-control" required >
                         </div>
                     </div>
                     <div class="row">
@@ -56,10 +56,14 @@
                         </div>
                         <div class="col form-group">
                             <label for="" >Country </label>
-                            <input type="text" name='Country' class="form-control" required >
+                            <input type="text" name='country' class="form-control" required >
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col form-group">
+                            <label for="" >Pincode </label>
+                            <input type="text" name='pincode' class="form-control" required >
+                        </div>
                         <div class="col form-group">
                             <label for="" >Order Note </label>
                             <textarea type="text" name='order_note' class="form-control" required> </textarea>
